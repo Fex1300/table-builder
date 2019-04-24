@@ -1,2 +1,2 @@
 # table-builder
-This is a simple table builder plugin
+Build one table in Javascpript with no other dependencies
