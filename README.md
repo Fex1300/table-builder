@@ -47,7 +47,7 @@ The Object `var Config` can be defined in advanced way:
 ### Config.tableSetting structure
 **Table of properties**
 
-|Name|TypeDescription|
+|Name|Type|Description|
 |:---:|:---:|:---:|
 |caption|Object|Add caption to table. You can add `caption.attr` property to describe better the style of caption|
 |attr|Object|Describe class and/or id of table|
