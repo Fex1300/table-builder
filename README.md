@@ -343,7 +343,7 @@ Config.tableSetting.customField: {
 |class|String|Add class to button|
 |label|String|Add label to button (it can be HTML Code also)|
 |event|String|Add one HTML5 event to the element|
-|callback|Function|Add callback to recall when event occurs|
+|callback|Function|Add callback to recall when event occurs. Callback pass as first parameter caller HTML element (`this`). The second parameter is `key` value of row|
 
 If `Config.tableSetting.customField.buttons.event` exists, then `Config.tableSetting.customField.buttons.callback` must exist also.
 
