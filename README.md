@@ -44,6 +44,54 @@ The Object `var Config` can be defined in advanced way:
   };
 ```
 
+The auto generated HTML Code is:
+```html
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>surname</th>
+      <th>category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Federico</td>
+      <td>Grande</td>
+      <td>Developer</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Matteo</td>
+      <td>Tassoni</td>
+      <td>Developer</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Silvia</td>
+      <td>Buccelli</td>
+      <td>Useless</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Mario</td>
+      <td>Rossi</td>
+      <td>Other</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Napoleone</td>
+      <td>Bonaparte</td>
+      <td>Other</td>
+    </tr>
+  </tbody>
+  <tfoot>
+  </tfoot>
+</table>
+```
+
 ### Config.tableSetting structure
 
 |Name|Type|Description|
@@ -54,17 +102,21 @@ The Object `var Config` can be defined in advanced way:
 |multipleTbody|Object|Build different `<tbody></tbody>` element according to `multipleTbody.filter` property. You can add `rowDescriptor` property to build one row of description (in this case you must add `rowDescriptor.class`)|
 |theadClass|String|Add class to `<thead></thead>` element|
 |tbodyBaseClass|String|Add class to `<tbody></tbody>` element|
-|customField|Object|Add custom column with buttons. All of properties of this object must exist|
+|customField|Object|Add custom column with buttons. All of properties of this object must exist!|
 
 **Config.tableSetting.caption**
 ```js
 Config.tableSetting.caption: {
-    value: "Dati Anagrafici",
+    value: "Personal Data",
     attr: { 
         class: "caption-class", 
         id: "caption-id" 
     } 
 };
+```
+Generate
+```html
+<caption class="caption-class" id="caption-id">Personal Data</caption>
 ```
 
 **Config.tableSetting.attr**
@@ -73,6 +125,12 @@ Config.tableSetting.attr: {
     class: "table-class", 
     id: "table-id" 
 };
+```
+Generate
+```html
+<table class="table-class" id="table-id">
+  ...
+</table>
 ```
 
 **Config.tableSetting.colgroup**
