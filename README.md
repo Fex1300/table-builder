@@ -518,7 +518,7 @@ The following code describe a new dynamic `<td></td>` (with configuration descri
 ```
 This `<td></td>` element is associated to the `<tr></tr>` with the key equal to 1 (in this case is the value of `<th>id</th>` column).
 
-##Advanced Example
+## Advanced Example
 
 Write Advanced configuaration:
 ```html
