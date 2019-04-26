@@ -1,3 +1,6 @@
+//DEFAULT TABLE CLASS: table
+
+
 /**
  * 
  * @param {Object} config Configuration object for table
@@ -382,10 +385,16 @@ function BuildTable(config) {
 
     }
 
-    function CreateTfoot() {
+    /**
+     * 
+     * @param {Object[]} tableCols Header of columns. Ex of structure: [ { id: { title: "ID", colspan: { thead: 1 , tbody: 1 } , class: { thead: "custom-class-head-cell" , tbody: "custom-class-body-cell" } } } , { name: {title: "Nome", colspan: 1 , class: "custom-class" } } ]
+     */
+    function CreateTfoot(tableCols) {
         var html = `
             <tfoot>
-
+                <tr>
+                    <td colspan="${CountColumns(tableCols)}"></td>
+                </tr>
             </tfoot>
         `;
 
@@ -432,7 +441,7 @@ function BuildTable(config) {
     var thead = CreateThead(parsedThead, (typeof config.tableSetting !== "undefined") ? ((typeof config.tableSetting.theadClass !== "undefined") ? config.tableSetting.theadClass : false) : false);
     var parsedTbody = TbodyParser(config.data, config.tableCols, (typeof config.tableSetting !== "undefined" && Object.keys(config.tableSetting).length > 0) ? (typeof config.tableSetting.multipleTbody !== "undefined" && Object.keys(config.tableSetting.multipleTbody).length > 0 ? config.tableSetting.multipleTbody : false ) : false);
     var tbody = CreateTbody(parsedTbody, (typeof config.tableSetting !== "undefined") ? ((typeof config.tableSetting.tbodyBaseClass !== "undefined") ? config.tableSetting.tbodyBaseClass : false) : false);
-    var tfoot = CreateTfoot();
+    var tfoot = CreateTfoot(config.tableCols);
 
     var table = `
         <table${tableAttr}>
