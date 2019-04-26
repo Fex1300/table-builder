@@ -92,6 +92,169 @@ The auto generated HTML Code is:
 </table>
 ```
 
+### Config.tableCols array structure
+
+With this array you can describe columns of table. Let's start from this dataset:
+```js
+var objArray: [
+  {id: 1, name: "Federico", surname: "Grande", category: "Developer"}, 
+  {id: 2, name: "Matteo", surname: "Tassoni", category: "Developer"}, 
+  {id: 3, name: "Silvia", surname: "Buccelli", category: "Useless"},
+  {id: 4, name: "Mario", surname: "Rossi", category: "Other"},
+  {id: 5, name: "Napoleone", surname: "Bonaparte", category: "Other"}
+];
+```
+Then, the basic configuration of `Config.tableCols` is:
+```js
+Config.tableCols = [
+  {id: {}}, 
+  {name: {}}, 
+  {surname: {}}, 
+  {category: {}}
+]
+```
+If `Config.tableCols` exists and it is an array with length > 0, then a table will be built with only columns written in `Config.tableCols`. With the last configuration of `Config.tableCols` you generate:
+```html
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>surname</th>
+      <th>category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Federico</td>
+      <td>Grande</td>
+      <td>Developer</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Matteo</td>
+      <td>Tassoni</td>
+      <td>Developer</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Silvia</td>
+      <td>Buccelli</td>
+      <td>Useless</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Mario</td>
+      <td>Rossi</td>
+      <td>Other</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Napoleone</td>
+      <td>Bonaparte</td>
+      <td>Other</td>
+    </tr>
+  </tbody>
+  <tfoot>
+  </tfoot>
+</table>
+```
+
+Otherwise, if `Config.tableCols` is:
+```js
+Config.tableCols = [
+  {id: {}}, 
+  {name: {}}
+]
+```
+then generated HTML Code will be:
+```html
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Federico</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Matteo</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Silvia</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Mario</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Napoleone</td>
+    </tr>
+  </tbody>
+  <tfoot>
+  </tfoot>
+</table>
+```
+
+`Config.tableCols` array accept objects with a keys equal to one of the key of an object of objArray. The value of the key will be structured as follows (properties list):
+
+|Name|Type|Description|
+|:---:|:---:|:---:|
+|title|String|Set header of column associated to the key|
+|colspan|Number/Object|Set `<td colspan="x"></td>` or `<th colspan="x"></th>` of column associated to the key. If it is an object the structure is: `colspan: {thead: 1, tbody: 1}` (example)|
+|class|String/Object|Set `<td class="y"></td>` or `<th class="x"></th>` of column associated to the key. If it is an object the structure is: `class: {thead: "x", tbody: "y"}` (example)|
+
+Example:
+```js
+Config.tableCols = [
+  {id: {title: "ID", colspan: { thead: 1 , tbody: 1 } , class: "id-dataset-cell"}}, 
+  {name: {title: "Nome", colspan: 1 , class: { thead: "thead-name-cell" , tbody: "tbody-name-cell" }}}
+]
+```
+then generated HTML Code will be:
+```html
+<table>
+  <thead>
+    <tr>
+      <th class="id-dataset-cell" colspan="1"> ID </th>
+      <th class="thead-name-cell" colspan="1"> Nome </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="id-dataset-cell" colspan="1"> 1 </td>
+      <td class="tbody-name-cell" colspan="1"> Federico </td>
+    </tr>
+    <tr>
+      <td class="id-dataset-cell" colspan="1"> 2 </td>
+      <td class="tbody-name-cell" colspan="1"> Matteo </td>
+    </tr>
+    <tr>
+      <td class="id-dataset-cell" colspan="1"> 3 </td>
+      <td class="tbody-name-cell" colspan="1"> Silvia </td>
+    </tr>
+    <tr>
+      <td class="id-dataset-cell" colspan="1"> 4 </td>
+      <td class="tbody-name-cell" colspan="1"> Mario </td>
+    </tr>
+    <tr>
+      <td class="id-dataset-cell" colspan="1"> 5 </td>
+      <td class="tbody-name-cell" colspan="1"> Napoleone </td>
+    </tr>
+  </tbody>
+  <tfoot>
+  </tfoot>
+</table>
+```
+
 ### Config.tableSetting structure
 
 |Name|Type|Description|
@@ -106,7 +269,7 @@ The auto generated HTML Code is:
 
 **Config.tableSetting.caption**
 ```js
-Config.tableSetting.caption: {
+Config.tableSetting.caption = {
     value: "Personal Data",
     attr: { 
         class: "caption-class", 
@@ -121,7 +284,7 @@ Generate:
 
 **Config.tableSetting.attr**
 ```js
-Config.tableSetting.attr: {
+Config.tableSetting.attr = {
     class: "table-class", 
     id: "table-id" 
 };
@@ -135,7 +298,7 @@ Generate:
 
 **Config.tableSetting.colgroup**
 ```js
-Config.tableSetting.colgroup: [
+Config.tableSetting.colgroup = [
     {span: 1, style: "background-color:red;"},
     {span: 2, style: "background-color:blue;"},
     ...
@@ -162,7 +325,7 @@ var objArray: [
   {id: 5, name: "Napoleone", surname: "Bonaparte", category: "Other"}
 ];
 
-Config.tableSetting.multipleTbody: {
+Config.tableSetting.multipleTbody = {
     filter: "category"
 };
 ```
@@ -219,7 +382,7 @@ In this case, with `Config.tableSetting.multipleTbody.filter = "category"`, you 
 ```
 Morover, if you want to generate a description row for each `<tbody></tbody>`, add `Config.tableSetting.multipleTbody.rowDescriptor.class` property.
 ```js
-Config.tableSetting.multipleTbody: {
+Config.tableSetting.multipleTbody = {
     filter: "category",
     rowDescriptor: {
         class: "row-descriptor-class"
@@ -289,7 +452,7 @@ The result is:
 
 **Config.tableSetting.theadClass**
 ```js
-Config.tableSetting.theadClass: "thead-class";
+Config.tableSetting.theadClass = "thead-class";
 ```
 The code above add class to `<thead></thead>` tag:
 ```html
@@ -300,7 +463,7 @@ The code above add class to `<thead></thead>` tag:
 
 **Config.tableSetting.tbodyBaseClass**
 ```js
-Config.tableSetting.tbodyBaseClass: "tbody-class";
+Config.tableSetting.tbodyBaseClass = "tbody-class";
 ```
 The code above add class to `<tbody></tbody>` tag (if `multipleTbody` is active, add this class to all `<tbody></tbody>` tags):
 ```html
@@ -322,7 +485,7 @@ function deleteRow(obj, id) {
     console.log("Delete", obj, "Key of row --> " + id);
 }
 
-Config.tableSetting.customField: {
+Config.tableSetting.customField = {
     title: "Custom Column",
     key: "id",
     buttons: [
