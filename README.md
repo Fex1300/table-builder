@@ -54,7 +54,7 @@ The Object `var Config` can be defined in advanced way:
 |multipleTbody|Object|Build different `<tbody></tbody>` element according to `multipleTbody.filter` property. You can add `rowDescriptor` property to build one row of description (in this case you must add `rowDescriptor.class`)|
 |theadClass|String|Add class to `<thead></thead>` element|
 |tbodyBaseClass|String|Add class to `<tbody></tbody>` element|
-|customField|Object|Add custom column with buttons. All of properties of this object must be exist|
+|customField|Object|Add custom column with buttons. All of properties of this object must exist|
 
 **Config.tableSetting.caption**
 ```js
