@@ -520,7 +520,7 @@ This `<td></td>` element is associated to the `<tr></tr>` with the key equal to 
 
 ## Advanced Example
 
-Write Advanced configuaration:
+Write Advanced configuration:
 ```html
 <script>
   function updateRow(obj, id) {
