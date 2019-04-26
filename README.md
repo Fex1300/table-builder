@@ -513,7 +513,8 @@ If `Config.tableSetting.customField.buttons.event` exists, then `Config.tableSet
 The following code describe a new dynamic `<td></td>` (with configuration describes above):
 ```html
 <td class="custom-class-custom-field-body-cell">
-    <button id="btn-update-0" class="btn-class-update" onclick="javascript:updateRow(this, 1);">Update</button><button id="btn-del-0" class="btn-class-delete" onclick="javascript:deleteRow(this, 1);">Delete</button>
+  <button id="btn-update-0" class="btn-class-update" onclick="javascript:updateRow(this, 1);">Update</button>
+  <button id="btn-del-0" class="btn-class-delete" onclick="javascript:deleteRow(this, 1);">Delete</button>
 </td>
 ```
 This `<td></td>` element is associated to the `<tr></tr>` with the key equal to 1 (in this case is the value of `<th>id</th>` column).
