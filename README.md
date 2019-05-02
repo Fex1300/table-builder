@@ -25,7 +25,6 @@ Dowload TableBuilder.js file and include in html code
   //Configuration variable
   var Config = {
     data: objArray
-    }
   };
   
   //Function BuildTable(Config) return generated html of table full of data
